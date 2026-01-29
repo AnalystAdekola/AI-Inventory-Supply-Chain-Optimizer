@@ -6,20 +6,50 @@ from datetime import datetime
 # --- 1. SETTINGS & THEME ---
 st.set_page_config(page_title="Analyst Inventory Optimizer", layout="wide")
 
-# Custom CSS for a "Beautiful" UI
+# Custom CSS for a "Dim/Dark Mode" Medical UI
 st.markdown("""
     <style>
-    .metric-card {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        text-align: center;
+    /* Main Background - Deep Dark Navy */
+    .stApp {
+        background-color: #0e1117; 
+        color: #e0e0e0;
     }
-    .stApp { background-color: #f4f7f9; }
+    
+    /* Metric Cards - Sleek Dark Grey */
+    [data-testid="stMetric"] {
+        background-color: #1a1c24;
+        border: 1px solid #2d2f39;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    /* Headers & Titles */
+    h1, h2, h3 {
+        color: #ffffff !important;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Sidebar - Muted Blue-Grey */
+    section[data-testid="stSidebar"] {
+        background-color: #161b22;
+        border-right: 1px solid #30363d;
+    }
+
+    /* Buttons */
+    .stButton>button {
+        background-color: #238636;
+        color: white;
+        border-radius: 8px;
+        border: none;
+    }
+    
+    /* Sidebar Text */
+    section[data-testid="stSidebar"] .stMarkdown {
+        color: #8b949e;
+    }
     </style>
 """, unsafe_allow_html=True)
-
 # --- 2. LOAD DATA ---
 @st.cache_data
 def load_data():
@@ -96,4 +126,5 @@ def color_status(val):
 st.dataframe(
     df.style.applymap(color_status, subset=['Status']),
     use_container_width=True
+
 )
