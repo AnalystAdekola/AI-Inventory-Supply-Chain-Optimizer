@@ -1,0 +1,16 @@
+# Web Interface & Dashboard
+streamlit>=1.35.0
+
+# Data Processing
+pandas>=2.0.0
+numpy
+
+# Interactive Visualizations
+plotly>=5.15.0
+
+# AI & Image Processing
+google-genai>=1.0.0
+Pillow>=10.0.0
+
+# Utilities
+python-dotenv
